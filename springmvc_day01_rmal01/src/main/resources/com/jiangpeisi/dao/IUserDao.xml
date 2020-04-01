@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangpeisi.dao.IUserDao">
+    <insert id="insert" parameterType="com.jiangpeisi.domain.User">
+        INSERT INTO user(username,password,findkey) values (#{username},#{password},#{findkey})
+    </insert>
+
+    <delete id="delete" parameterType="com.jiangpeisi.domain.User">
+        delete from user where username=#{username}
+    </delete>
+
+    <update id="update" parameterType="com.jiangpeisi.domain.User">
+        update user set address=#{address},sex=#{sex},tel=#{tel},email=#{email},signature=#{signature},nickname=#{nickname},age=#{age},avatar=#{avatar} where username=#{username}
+    </update>
+
+    <update id="updatePassword" parameterType="com.jiangpeisi.domain.User">
+        update user set password = #{password} where username=#{username};
+    </update>
+
+    <select id="findUser" parameterType="com.jiangpeisi.domain.User" resultType="com.jiangpeisi.domain.User">
+        select * from user where username=#{username} and password=#{password}
+    </select>
+
+    <select id="findByUsername" parameterType="String" resultType="com.jiangpeisi.domain.User">
+        select * from user where username=#{username}
+    </select>
+
+    <select id="findByUsernameAndKey" parameterType="com.jiangpeisi.domain.User" resultType="com.jiangpeisi.domain.User">
+        select * from user where username=#{username} and findkey=#{findkey}
+    </select>
+</mapper>
