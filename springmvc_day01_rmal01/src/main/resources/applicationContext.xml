@@ -22,7 +22,7 @@
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://47.107.103.142:3306/for_bishe"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://47.107.103.142:3306/new_bishe"></property>
         <property name="user" value="root"></property>
         <property name="password" value="AYJ@jps0203"></property>
     </bean>
@@ -30,6 +30,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.jiangpeisi"></property>
     </bean>

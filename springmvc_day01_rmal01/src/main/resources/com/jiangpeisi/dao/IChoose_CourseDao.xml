@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangpeisi.dao.IChoose_CourseDao">
+
+    <insert id="insert" parameterType="com.jiangpeisi.domain.Course_Choose">
+        insert into _courseChoose(username,coursename) values(#{username},#{coursename})
+    </insert>
+    <delete id="delete" parameterType="com.jiangpeisi.domain.Course_Choose">
+        delete from _courseChoose where username=#{username} and coursename=#{coursename}
+    </delete>
+</mapper>

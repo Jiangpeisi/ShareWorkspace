@@ -1,10 +1,13 @@
 package com.jiangpeisi.domain;
 
-import org.springframework.stereotype.Component;
 import java.io.Serializable;
+import java.util.List;
 
-@Component("User")
-public class User implements Serializable {
+/**
+ * 学生
+ */
+public class Student implements Serializable {
+    private Integer id;
     private String username;
     private String password;
     private String findkey;
@@ -16,11 +19,13 @@ public class User implements Serializable {
     private String nickname;
     private String age;
     private String avatar;
+    List<Course> courses;
 
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", findkey='" + findkey + '\'' +
                 ", address='" + address + '\'' +
@@ -32,6 +37,14 @@ public class User implements Serializable {
                 ", age='" + age + '\'' +
                 ", avatar='" + avatar + '\'' +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -120,5 +133,13 @@ public class User implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }
