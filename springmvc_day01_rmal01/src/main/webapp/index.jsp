@@ -24,6 +24,6 @@
     </form>
     <a href="test/getApi?username=root&password=123">获取API</a>
     <br/>
-    <a href="user/insert">测试SpringMvc</a>
+    <a href="student/insert">测试SpringMvc</a>
 </body>
 </html>
