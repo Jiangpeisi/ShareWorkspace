@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 
 @Controller
 @RequestMapping("/student")
@@ -23,10 +25,14 @@ public class StudentController {
     }
 
     @RequestMapping("/login")
-    public  @ResponseBody String login(@RequestBody Student student){
+    public  @ResponseBody
+    Map<String,String> login(@RequestBody Student student){
         System.out.println("Controller /user/login 执行");
-        return studentService.login(student);
+        Map<String,String> result = studentService.login(student);
+
+        return result;
     }
+
     @RequestMapping("/updatePassword")
     public @ResponseBody String updatePassword(@RequestBody Student student){
         System.out.println("Controller /user/updatePassword执行");

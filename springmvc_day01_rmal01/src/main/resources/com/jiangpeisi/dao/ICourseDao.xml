@@ -11,23 +11,33 @@
         </collection>
     </resultMap>
 
-    <select id="findAll"  resultType="com.jiangpeisi.domain.Course">
-        select * from course
+    <select id="findAll" resultType="com.jiangpeisi.domain.Course">
+        select *
+        from course
     </select>
 
     <select id="findByName" resultType="com.jiangpeisi.domain.Course">
-        select * from course where name=#{name}
+        select *
+        from course
+        where name = #{name}
     </select>
 
     <insert id="insert" parameterType="com.jiangpeisi.domain.Course">
-        insert into course (name,description) values (#{name},#{description});
+        insert into course (name, description)
+        values (#{name}, #{description});
     </insert>
 
     <delete id="delete" parameterType="com.jiangpeisi.domain.Course">
-        delete from course where id={#id}
+        delete
+        from course
+        where id = {#id}
     </delete>
 
     <update id="update" parameterType="com.jiangpeisi.domain.Course">
-        update course set where
+        update course
+        set
+            name = #{name},
+            description = #{description}
+            where id = #{id}
     </update>
 </mapper>

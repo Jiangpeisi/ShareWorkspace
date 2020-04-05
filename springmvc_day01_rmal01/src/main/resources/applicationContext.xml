@@ -21,10 +21,10 @@
     <!--Spring整合MyBaits-->
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://47.107.103.142:3306/new_bishe"></property>
-        <property name="user" value="root"></property>
-        <property name="password" value="AYJ@jps0203"></property>
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://47.107.103.142:3306/new_bishe"/>
+        <property name="user" value="root"/>
+        <property name="password" value="AYJ@jps0203"/>
     </bean>
     <!--配置SqlSessionFactory工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -3,32 +3,42 @@
         PUBLIC "-//mybatis.org//DTD config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiangpeisi.dao.IStudentDao">
-    <!--获取已选课程-->
-    <resultMap id="Choose_Course_Map" type="com.jiangpeisi.domain.Student">
-        <id column="username" property="username" />
-        <collection property="courses" ofType="com.jiangpeisi.domain.Course">
-            <id column="coursename" property="coursename"></id>
-        </collection>
-    </resultMap>
+
 
     <insert id="insert" parameterType="com.jiangpeisi.domain.Student">
-        INSERT INTO student(username,password,findkey) values (#{username},#{password},#{findkey})
+        INSERT INTO student(username, password, findkey)
+        values (#{username}, #{password}, #{findkey})
     </insert>
 
     <delete id="delete" parameterType="com.jiangpeisi.domain.Student">
-        delete from student where username=#{username}
+        delete
+        from student
+        where username = #{username}
     </delete>
 
     <update id="update" parameterType="com.jiangpeisi.domain.Student">
-        update student set address=#{address},sex=#{sex},tel=#{tel},email=#{email},signature=#{signature},nickname=#{nickname},age=#{age},avatar=#{avatar} where username=#{username}
+        update student
+        set address=#{address},
+            sex=#{sex},
+            tel=#{tel},
+            email=#{email},
+            signature=#{signature},
+            nickname=#{nickname},
+            age=#{age},
+            avatar=#{avatar}
+        where username = #{username}
     </update>
 
     <update id="updatePassword" parameterType="com.jiangpeisi.domain.Student">
-        update student set password = #{password} where username=#{username};
+        update student
+        set password = #{password}
+        where username = #{username};
     </update>
 
     <select id="findByName" parameterType="String" resultType="com.jiangpeisi.domain.Student">
-        select * from student where username=#{name}
+        select *
+        from student
+        where username = #{name}
     </select>
 
 </mapper>

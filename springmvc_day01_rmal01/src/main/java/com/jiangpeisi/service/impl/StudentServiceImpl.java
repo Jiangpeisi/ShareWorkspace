@@ -1,13 +1,15 @@
 package com.jiangpeisi.service.impl;
 
-import com.jiangpeisi.dao.IChoose_CourseDao;
+import com.jiangpeisi.dao.ICourseEnrollmentDao;
 import com.jiangpeisi.dao.IStudentDao;
-import com.jiangpeisi.domain.Course_Choose;
+import com.jiangpeisi.domain.CourseEnrollment;
 import com.jiangpeisi.domain.Student;
 import com.jiangpeisi.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service("studentService")
@@ -16,7 +18,7 @@ public class StudentServiceImpl implements IStudentService {
     @Autowired
     private IStudentDao studentDao;
     @Autowired
-    private IChoose_CourseDao choose_courseDao;
+    private ICourseEnrollmentDao choose_courseDao;
     /**
      * 注册用户
      * @param student
@@ -96,17 +98,22 @@ public class StudentServiceImpl implements IStudentService {
      * @return
      */
     @Override
-    public String login(Student student) {
+    public Map<String, String> login(Student student) {
         Student temp=studentDao.findByName(student.getUsername());
+        Map<String, String> map = new HashMap<>();
         if (temp==null){
-            return "账户不存在";
+            map.put("info","账户不存在");
+            map.put("result","false");
         }
         else if(temp.getPassword().equals(student.getPassword())){
-            return "登陆成功";
+            map.put("info","登录成功");
+            map.put("result","true");
         }
         else{
-            return "密码错误";
+            map.put("info","密码错误");
+            map.put("result","false");
         }
+        return map;
     }
 
     /**
@@ -127,7 +134,7 @@ public class StudentServiceImpl implements IStudentService {
      */
     @Override
     public String chooseCourse(String username, String coursename) {
-        Course_Choose _courseChoose =new Course_Choose();
+        CourseEnrollment _courseChoose =new CourseEnrollment();
 
         choose_courseDao.insert(_courseChoose);
         return "选课成功";

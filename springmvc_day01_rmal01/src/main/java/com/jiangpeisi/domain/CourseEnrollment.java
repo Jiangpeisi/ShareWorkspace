@@ -3,7 +3,7 @@ package com.jiangpeisi.domain;
 /**
  * 选课
  */
-public class Course_Choose {
+public class CourseEnrollment {
     private Integer course_offering_id;
     private Integer student_id;
 
