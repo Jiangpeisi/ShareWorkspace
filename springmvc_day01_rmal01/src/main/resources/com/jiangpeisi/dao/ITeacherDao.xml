@@ -39,4 +39,10 @@
         from teacher
         where username = #{name}
     </select>
+
+    <select id="findById" resultType="com.jiangpeisi.domain.Teacher">
+        select *
+        from teacher
+        where id = #{id}
+    </select>
 </mapper>

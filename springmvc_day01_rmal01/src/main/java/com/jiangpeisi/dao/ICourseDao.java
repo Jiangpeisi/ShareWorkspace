@@ -10,6 +10,7 @@ public interface ICourseDao {
     public void insert(Course course);
     public void update(Course course);
     public void delete(Course course);
+    public Course findById(Integer id);
     public Course findByName(String name);
     public List<Course> findAll(Course course);
 }

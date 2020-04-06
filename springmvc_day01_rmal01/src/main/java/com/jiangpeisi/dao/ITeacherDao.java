@@ -10,6 +10,9 @@ import java.util.List;
  */
 @Repository
 public interface ITeacherDao{
+
+   Teacher findById(Integer id);
+
     /**
      * 根据教师姓名查询
      * @param name

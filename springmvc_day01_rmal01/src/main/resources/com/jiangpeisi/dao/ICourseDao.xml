@@ -4,13 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiangpeisi.dao.ICourseDao">
 
-    <resultMap id="Course_Students" type="com.jiangpeisi.domain.Course">
-        <id column="coursename" property="coursename"></id>
-        <collection property="students" ofType="com.jiangpeisi.domain.Student">
-            <id column="username" property="username"></id>
-        </collection>
-    </resultMap>
-
     <select id="findAll" resultType="com.jiangpeisi.domain.Course">
         select *
         from course
@@ -20,6 +13,12 @@
         select *
         from course
         where name = #{name}
+    </select>
+
+    <select id="findById" resultType="com.jiangpeisi.domain.Course">
+        select *
+        from course
+        where id = #{id}
     </select>
 
     <insert id="insert" parameterType="com.jiangpeisi.domain.Course">
@@ -35,9 +34,8 @@
 
     <update id="update" parameterType="com.jiangpeisi.domain.Course">
         update course
-        set
-            name = #{name},
+        set name        = #{name},
             description = #{description}
-            where id = #{id}
+        where id = #{id}
     </update>
 </mapper>
