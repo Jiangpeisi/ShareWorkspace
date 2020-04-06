@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangpeisi.dao.ICourse_OfferingDao">
+    <resultMap id="Choose_Student_Map" type="com.jiangpeisi.domain.Course_Offering">
+        <id property="id" column="id"/>
+        <collection property="students" ofType="com.jiangpeisi.domain.Student">
+            <id property="id" column="student_id"></id>
+            <result property="username" column="username"></result>
+        </collection>
+    </resultMap>
+    <resultMap id="Quote_Resource_Map" type="com.jiangpeisi.domain.Course_Offering">
+        <id property="id" column="id"/>
+        <collection property="resources" ofType="com.jiangpeisi.domain.Course_Resource">
+            <id property="id" column="course_resource_id"></id>
+            <result property="resource_name" column="resource_name"></result>
+        </collection>
+    </resultMap>
+    <insert id="insert" parameterType="com.jiangpeisi.domain.Course_Offering">
+        insert into course_offering(course_id,teacher_id) values(#{course_id},#{teacher_id})
+    </insert>
+    <delete id="delete" parameterType="com.jiangpeisi.domain.Course_Offering">
+        delete from course_offering where id=#{id}
+    </delete>
+    <select id="get_choose_student" resultMap="Choose_Student_Map" parameterType="com.jiangpeisi.domain.Course_Offering">
+        SELECT
+        course_offering.id,
+        student.id as student_id,
+        student.username
+        FROM
+        course_offering
+        INNER JOIN course_choose ON course_choose.course_offering_id = course_offering.id
+        INNER JOIN student ON course_choose.student_id = student.id
+        where course_offering.id=#{id}
+    </select>
+    <select id="get_quote_resource" resultMap="Quote_Resource_Map" parameterType="com.jiangpeisi.domain.Course_Offering">
+        SELECT
+        course_offering.id,
+        course_resource.id AS course_resource_id,
+        course_resource.course_id,
+        course_resource.resource_url,
+        course_resource.resource_name,
+        course_resource.resource_type
+        FROM
+        course_offering
+        INNER JOIN course_offering_resource ON course_offering_resource.course_offering_id = course_offering.id
+        INNER JOIN course_resource ON course_offering_resource.course_resource_id = course_resource.id
+    </select>
+</mapper>

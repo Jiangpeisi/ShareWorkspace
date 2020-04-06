@@ -1,5 +1,6 @@
 package com.jiangpeisi.controller;
 
+import com.jiangpeisi.domain.Course_Choose;
 import com.jiangpeisi.domain.Student;
 import com.jiangpeisi.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,15 @@ public class StudentController {
     Student findByName(@RequestBody Student student){
         System.out.println("Controller /user/findByName 执行");
         return studentService.findByName(student.getUsername());
+    }
+    @RequestMapping("/chooseCourse")
+    public @ResponseBody  String chooseCourse(@RequestBody Course_Choose course_choose){
+        System.out.println("Controller /user/chooseCourse 执行");
+        return studentService.chooseCourse(course_choose);
+    }
+    @RequestMapping("/findChooseCourse")
+    public @ResponseBody Student findChooseCourse(@RequestBody Student student){
+        System.out.println("Controller /user/findChooseCourse 执行");
+        return studentService.findChooseCourse(student);
     }
 }

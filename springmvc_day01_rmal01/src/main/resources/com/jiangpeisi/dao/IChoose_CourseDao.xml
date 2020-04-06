@@ -5,9 +5,9 @@
 <mapper namespace="com.jiangpeisi.dao.IChoose_CourseDao">
 
     <insert id="insert" parameterType="com.jiangpeisi.domain.Course_Choose">
-        insert into _courseChoose(username,coursename) values(#{username},#{coursename})
+        insert into course_choose(course_offering_id,student_id) values(#{course_offering_id},#{student_id})
     </insert>
     <delete id="delete" parameterType="com.jiangpeisi.domain.Course_Choose">
-        delete from _courseChoose where username=#{username} and coursename=#{coursename}
+        delete from course_choose where course_offering_id=#{course_offering_id} and student_id=#{student_id}
     </delete>
 </mapper>
