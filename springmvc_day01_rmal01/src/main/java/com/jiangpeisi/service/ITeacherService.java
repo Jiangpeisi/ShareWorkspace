@@ -1,8 +1,6 @@
 package com.jiangpeisi.service;
 
-import com.jiangpeisi.domain.Course;
-import com.jiangpeisi.domain.Student;
-import com.jiangpeisi.domain.Teacher;
+import com.jiangpeisi.domain.*;
 
 public interface ITeacherService {
     public String insert(Teacher teacher);
@@ -12,4 +10,9 @@ public interface ITeacherService {
     public String updatePassword(Teacher teacher);
     public Teacher findByName(String name);
     public String createCourse(Course course);
+    public String offerCourse(Course_Offering course_offering);
+    public Course_Offering findChooseStudent(Course_Offering course_offering);
+    public String uploadResource(Course_Resource course_resource);
+    public String quote_Resource(Course_Offering_Resource course_offering_resource);
+    public Course_Offering findQuoteResource(Course_Offering course_offering);
 }

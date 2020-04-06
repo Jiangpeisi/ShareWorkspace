@@ -6,6 +6,6 @@
     <title>文件下载</title>
 </head>
 <body>
-<a href="download.action?filename=<%=URLEncoder.encode("__pom.xml","UTF-8")%>">文件下载</a>
+<a href="http://localhost:8080/springmvc_day01_rmal01_war/upload/1_head.jpg">文件下载</a>
 </body>
 </html>

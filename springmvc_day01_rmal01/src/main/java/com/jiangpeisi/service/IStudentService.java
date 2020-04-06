@@ -1,5 +1,7 @@
 package com.jiangpeisi.service;
 
+import com.jiangpeisi.domain.Course_Choose;
+import com.jiangpeisi.domain.Course_Resource;
 import com.jiangpeisi.domain.Student;
 
 public interface IStudentService {
@@ -9,5 +11,7 @@ public interface IStudentService {
     public String login(Student student);
     public String updatePassword(Student student);
     public Student findByName(String name);
-    public String chooseCourse(String username,String coursename);
+    public String chooseCourse(Course_Choose course_choose);
+    public Student findChooseCourse(Student student);
+    public Course_Resource findCourseById(int id);
 }

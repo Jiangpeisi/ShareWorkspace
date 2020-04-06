@@ -1,6 +1,7 @@
 package com.jiangpeisi.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 教师
@@ -18,6 +19,15 @@ public class Teacher implements Serializable {
     private String nickname;
     private String age;
     private String avatar;
+    private List<Course> offering_courses;
+
+    public List<Course> getOffering_courses() {
+        return offering_courses;
+    }
+
+    public void setOffering_courses(List<Course> offering_courses) {
+        this.offering_courses = offering_courses;
+    }
 
     @Override
     public String toString() {

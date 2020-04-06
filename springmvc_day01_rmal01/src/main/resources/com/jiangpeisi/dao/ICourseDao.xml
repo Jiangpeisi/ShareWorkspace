@@ -15,7 +15,7 @@
         select * from course
     </select>
 
-    <select id="findByName" resultType="com.jiangpeisi.domain.Course">
+    <select id="findByName" resultType="com.jiangpeisi.domain.Course" parameterType="java.lang.String">
         select * from course where name=#{name}
     </select>
 

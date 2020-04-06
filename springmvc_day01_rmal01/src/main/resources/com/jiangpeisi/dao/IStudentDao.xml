@@ -5,9 +5,10 @@
 <mapper namespace="com.jiangpeisi.dao.IStudentDao">
     <!--获取已选课程-->
     <resultMap id="Choose_Course_Map" type="com.jiangpeisi.domain.Student">
-        <id column="username" property="username" />
+        <id column="id" property="id" />
+        <result column="student_name" property="username"/>
         <collection property="courses" ofType="com.jiangpeisi.domain.Course">
-            <id column="coursename" property="coursename"></id>
+            <id column="course_name" property="name"></id>
         </collection>
     </resultMap>
 
@@ -31,4 +32,9 @@
         select * from student where username=#{name}
     </select>
 
+    <select id="get_choose_course" parameterType="com.jiangpeisi.domain.Student" resultMap="Choose_Course_Map">
+        select student.id,student.username as student_name,course.`name` as course_name
+        from ((((`student` join `course_choose` on((`course_choose`.`student_id` = `student`.`id`))) join `course_offering` on((`course_choose`.`course_offering_id` = `course_offering`.`id`))) join `course` on((`course_offering`.`course_id` = `course`.`id`))) join `teacher` on((`course_offering`.`teacher_id` = `teacher`.`id`)))
+        where student.id =#{id}
+    </select>
 </mapper>

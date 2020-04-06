@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IChoose_CourseDao {
-    public void insert(Course_Choose _courseChoose);
-    public void delete(Course_Choose _courseChoose);
+    void insert(Course_Choose _courseChoose);
+    void delete(Course_Choose _courseChoose);
 }

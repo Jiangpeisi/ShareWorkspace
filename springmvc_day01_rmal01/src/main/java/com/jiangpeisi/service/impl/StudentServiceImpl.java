@@ -1,8 +1,10 @@
 package com.jiangpeisi.service.impl;
 
 import com.jiangpeisi.dao.IChoose_CourseDao;
+import com.jiangpeisi.dao.ICourse_ResourceDao;
 import com.jiangpeisi.dao.IStudentDao;
 import com.jiangpeisi.domain.Course_Choose;
+import com.jiangpeisi.domain.Course_Resource;
 import com.jiangpeisi.domain.Student;
 import com.jiangpeisi.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class StudentServiceImpl implements IStudentService {
     private IStudentDao studentDao;
     @Autowired
     private IChoose_CourseDao choose_courseDao;
+    @Autowired
+    private ICourse_ResourceDao course_resourceDao;
     /**
      * 注册用户
      * @param student
@@ -119,17 +123,19 @@ public class StudentServiceImpl implements IStudentService {
         return studentDao.findByName(name);
     }
 
-    /**
-     * 用户选课
-     * @param username 用户名
-     * @param coursename 课程名称
-     * @return
-     */
     @Override
-    public String chooseCourse(String username, String coursename) {
-        Course_Choose _courseChoose =new Course_Choose();
-
-        choose_courseDao.insert(_courseChoose);
+    public String chooseCourse(Course_Choose course_choose) {
+        choose_courseDao.insert(course_choose);
         return "选课成功";
+    }
+
+    @Override
+    public Student findChooseCourse(Student student) {
+        return studentDao.get_choose_course(student);
+    }
+
+    @Override
+    public Course_Resource findCourseById(int id) {
+        return course_resourceDao.findById(id);
     }
 }
