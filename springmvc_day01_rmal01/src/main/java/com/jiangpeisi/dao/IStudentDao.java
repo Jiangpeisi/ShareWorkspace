@@ -15,6 +15,10 @@ public interface IStudentDao {
      */
     Student findByName(String name);
 
+    //todo
+    Student findById(Integer id);
+
+
     /**
      * 插入学生，用于注册
      * @param student
