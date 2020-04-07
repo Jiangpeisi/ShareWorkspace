@@ -44,8 +44,4 @@ public interface ICourseOfferingDao {
     @ResultMap("CourseOfferingMap")
     List<CourseOffering> findByTeacher(Integer id);
 
-    //todo
-    /*
-    CourseOffering get_choose_student(CourseOffering course_offering);
-    CourseOffering get_quote_resource(CourseOffering course_offering);*/
-}
+   }

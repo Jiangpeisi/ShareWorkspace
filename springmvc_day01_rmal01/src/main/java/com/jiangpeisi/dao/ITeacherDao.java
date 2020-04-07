@@ -49,8 +49,4 @@ public interface ITeacherDao {
      * @param teacher
      */
     void updatePassword(Teacher teacher);
-
-    //todo 改到service
- /*
-    Teacher getOfferingCourse(Teacher teacher);*/
 }
