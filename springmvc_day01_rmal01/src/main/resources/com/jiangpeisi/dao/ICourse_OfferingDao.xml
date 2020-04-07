@@ -3,13 +3,15 @@
         PUBLIC "-//mybatis.org//DTD config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiangpeisi.dao.ICourse_OfferingDao">
+    <!--选择该课程的学生-->
     <resultMap id="Choose_Student_Map" type="com.jiangpeisi.domain.Course_Offering">
         <id property="id" column="id"/>
-        <collection property="students" ofType="com.jiangpeisi.domain.Student">
+        <collection property="students" ofType="com.jiangpeisi.domain.Student" select="com.jiangpeisi.dao.IStudentDao.findById">
             <id property="id" column="student_id"></id>
             <result property="username" column="username"></result>
         </collection>
     </resultMap>
+    <!--该课程引用的资源-->
     <resultMap id="Quote_Resource_Map" type="com.jiangpeisi.domain.Course_Offering">
         <id property="id" column="id"/>
         <collection property="resources" ofType="com.jiangpeisi.domain.Course_Resource">
@@ -46,5 +48,8 @@
         course_offering
         INNER JOIN course_offering_resource ON course_offering_resource.course_offering_id = course_offering.id
         INNER JOIN course_resource ON course_offering_resource.course_resource_id = course_resource.id
+    </select>
+    <select id="findById" resultType="com.jiangpeisi.domain.Course_Offering" parameterType="java.lang.Integer">
+        select * from course_offering where id=#{id}
     </select>
 </mapper>

@@ -11,6 +11,25 @@ public class Course_Offering {
     private Integer teacher_id;
     private List<Student> students;
     private List<Course_Resource> resources;
+    private Course course;
+    private Teacher teacher;
+
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     public List<Course_Resource> getResources() {
         return resources;

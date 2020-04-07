@@ -1,6 +1,7 @@
 package com.jiangpeisi.dao;
 
 import com.jiangpeisi.domain.Student;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,7 +14,15 @@ public interface IStudentDao {
      * @param name
      * @return
      */
+    @Select("select * from student where username=#{name}")
     Student findByName(String name);
+
+    /**
+     * 根据id查找
+     * @param id
+     * @return
+     */
+    Student findById(Integer id);
 
     /**
      * 插入学生，用于注册
@@ -39,5 +48,10 @@ public interface IStudentDao {
      */
     void updatePassword(Student student);
 
+    /**
+     * 获取已经选择课程信息
+     * @param student
+     * @return
+     */
     Student get_choose_course(Student student);
 }

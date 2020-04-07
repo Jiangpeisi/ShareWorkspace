@@ -6,9 +6,11 @@
     <!--获取已选课程-->
     <resultMap id="Choose_Course_Map" type="com.jiangpeisi.domain.Student">
         <id column="id" property="id" />
-        <result column="student_name" property="username"/>
-        <collection property="courses" ofType="com.jiangpeisi.domain.Course">
-            <id column="course_name" property="name"></id>
+        <result column="username" property="username"/>
+        <collection property="course_offerings" ofType="com.jiangpeisi.domain.Course_Offering">
+            <id column="course_offering_id" property="id"></id>
+            <association property="course" column="course_id" javaType="com.jiangpeisi.domain.Course" select="com.jiangpeisi.dao.ICourseDao.findById"></association>
+            <association property="teacher" column="teacher_id" javaType="com.jiangpeisi.domain.Teacher" select="com.jiangpeisi.dao.ITeacherDao.findById"></association>
         </collection>
     </resultMap>
 
@@ -32,9 +34,13 @@
         select * from student where username=#{name}
     </select>
 
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.jiangpeisi.domain.Student">
+        select * from student where id=#{id}
+    </select>
+
     <select id="get_choose_course" parameterType="com.jiangpeisi.domain.Student" resultMap="Choose_Course_Map">
-        select student.id,student.username as student_name,course.`name` as course_name
-        from ((((`student` join `course_choose` on((`course_choose`.`student_id` = `student`.`id`))) join `course_offering` on((`course_choose`.`course_offering_id` = `course_offering`.`id`))) join `course` on((`course_offering`.`course_id` = `course`.`id`))) join `teacher` on((`course_offering`.`teacher_id` = `teacher`.`id`)))
-        where student.id =#{id}
+        SELECT student.id,student.username,course_offering.id AS course_offering_id,course_offering.course_id,course_offering.teacher_id
+        FROM student INNER JOIN course_choose ON course_choose.student_id = student.id INNER JOIN course_offering ON course_choose.course_offering_id = course_offering.id
+        where student.id=#{id}
     </select>
 </mapper>

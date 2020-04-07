@@ -19,7 +19,7 @@ public class Student implements Serializable {
     private String nickname;
     private String age;
     private String avatar;
-    List<Course> courses;
+    List<Course_Offering> course_offerings;
 
     @Override
     public String toString() {
@@ -135,11 +135,11 @@ public class Student implements Serializable {
         this.avatar = avatar;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Course_Offering> getCourse_offerings() {
+        return course_offerings;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setCourse_offerings(List<Course_Offering> course_offerings) {
+        this.course_offerings = course_offerings;
     }
 }

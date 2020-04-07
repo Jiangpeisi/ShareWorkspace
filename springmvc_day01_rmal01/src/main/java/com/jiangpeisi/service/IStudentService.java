@@ -13,5 +13,4 @@ public interface IStudentService {
     public Student findByName(String name);
     public String chooseCourse(Course_Choose course_choose);
     public Student findChooseCourse(Student student);
-    public Course_Resource findCourseById(int id);
 }

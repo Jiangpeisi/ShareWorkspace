@@ -11,5 +11,6 @@ public interface ICourseDao {
     void update(Course course);
     void delete(Course course);
     Course findByName(String name);
+    Course findById(Integer id);
     List<Course> findAll();
 }

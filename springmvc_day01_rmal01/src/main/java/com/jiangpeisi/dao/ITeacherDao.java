@@ -42,5 +42,10 @@ public interface ITeacherDao{
      */
     void updatePassword(Teacher teacher);
 
-    Teacher getOfferingCourse(Teacher teacher);
+    /**
+     * 根据id查找
+     * @param id
+     * @return
+     */
+    Teacher findById(Integer id);
 }
