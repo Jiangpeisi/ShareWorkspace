@@ -1,15 +1,18 @@
 package com.jiangpeisi.service.impl;
 
-import com.jiangpeisi.dao.IChoose_CourseDao;
-import com.jiangpeisi.dao.ICourse_ResourceDao;
+
+import com.jiangpeisi.dao.ICourseEnrollmentDao;
+import com.jiangpeisi.dao.ICourseResourceDao;
 import com.jiangpeisi.dao.IStudentDao;
-import com.jiangpeisi.domain.Course_Choose;
-import com.jiangpeisi.domain.Course_Resource;
+import com.jiangpeisi.domain.CourseOffering;
+import com.jiangpeisi.domain.CourseResource;
 import com.jiangpeisi.domain.Student;
 import com.jiangpeisi.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service("studentService")
@@ -18,18 +21,20 @@ public class StudentServiceImpl implements IStudentService {
     @Autowired
     private IStudentDao studentDao;
     @Autowired
-    private IChoose_CourseDao choose_courseDao;
+    private ICourseEnrollmentDao courseEnrollmentDao;
     @Autowired
-    private ICourse_ResourceDao course_resourceDao;
+    private ICourseResourceDao course_resourceDao;
+
     /**
      * 注册用户
+     *
      * @param student
      * @return
      */
     @Override
     public String insert(Student student) {
-        if(studentDao.findByName(student.getUsername())!=null)
-            return "注册失败，"+ student.getUsername()+"已经存在";
+        if (studentDao.findByName(student.getUsername()) != null)
+            return "注册失败，" + student.getUsername() + "已经存在";
         else {
             studentDao.insert(student);
             return "注册成功";
@@ -38,6 +43,7 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 删除用户
+     *
      * @param student
      * @return
      */
@@ -49,26 +55,26 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 更改用户密码
+     *
      * @param student
      * @return
      */
     @Override
     public String updatePassword(Student student) {
-        Student temp=studentDao.findByName(student.getUsername());
-        if(temp==null){
+        Student temp = studentDao.findByName(student.getUsername());
+        if (temp == null) {
             return "更改失败,用户不存在";
-        }
-        else if (temp.getFindkey().equals(student.getFindkey())){
+        } else if (temp.getFindkey().equals(student.getFindkey())) {
             studentDao.updatePassword(student);
             return "更改成功";
-        }
-        else {
+        } else {
             return "更改失败，密钥错误";
         }
     }
 
     /**
      * 更新用户信息
+     *
      * @param student
      */
     @Override
@@ -96,25 +102,30 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 用户登陆
+     *
      * @param student
      * @return
      */
     @Override
-    public String login(Student student) {
-        Student temp=studentDao.findByName(student.getUsername());
-        if (temp==null){
-            return "账户不存在";
+    public Map<String, String> login(Student student) {
+        Student temp = studentDao.findByName(student.getUsername());
+        Map<String, String> map = new HashMap<>();
+        if (temp == null) {
+            map.put("info", "账户不存在");
+            map.put("result", "false");
+        } else if (temp.getPassword().equals(student.getPassword())) {
+            map.put("info", "登录成功");
+            map.put("result", "true");
+        } else {
+            map.put("info", "密码错误");
+            map.put("result", "false");
         }
-        else if(temp.getPassword().equals(student.getPassword())){
-            return "登陆成功";
-        }
-        else{
-            return "密码错误";
-        }
+        return map;
     }
 
     /**
      * 根据username查询用户信息
+     *
      * @param name
      * @return
      */
@@ -124,18 +135,19 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public String chooseCourse(Course_Choose course_choose) {
-        choose_courseDao.insert(course_choose);
+    public String chooseCourse(CourseOffering co,Student student) {
+        courseEnrollmentDao.insert(co.getId(),student.getId());
         return "选课成功";
     }
 
     @Override
     public Student findChooseCourse(Student student) {
-        return studentDao.get_choose_course(student);
+//        return studentDao.get_choose_course(student);
+    return null;
     }
 
     @Override
-    public Course_Resource findCourseById(int id) {
+    public CourseResource findCourseById(int id) {
         return course_resourceDao.findById(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.jiangpeisi.controller;
 
-import com.jiangpeisi.domain.Course_Resource;
+import com.jiangpeisi.domain.Course;
+import com.jiangpeisi.domain.CourseResource;
 import com.jiangpeisi.service.IStudentService;
 import com.jiangpeisi.service.ITeacherService;
 import org.apache.commons.io.FileUtils;
@@ -29,24 +30,24 @@ public class FileUploadAndDownloadController {
     @Autowired
     IStudentService studentService;
     @RequestMapping("uploadCourseResource")
-    public @ResponseBody String uploadCourseResource(@RequestParam("course_id") int course_id, @RequestParam("uploadfile") List<MultipartFile> uploadfile, HttpServletRequest request){
+    public @ResponseBody String uploadCourseResource(@RequestParam("courseId") Integer courseId, @RequestParam("uploadfile") List<MultipartFile> uploadfile, HttpServletRequest request){
         if(!uploadfile.isEmpty()&&uploadfile.size()>0){
             for (MultipartFile multipartFile : uploadfile) {
                 String filename=multipartFile.getOriginalFilename();
-                String path=request.getSession().getServletContext().getRealPath("/Resource/"+course_id+"/");
+                String path=request.getSession().getServletContext().getRealPath("/Resource/"+ courseId +"/");
                 File filePath=new File(path);
                 if (!filePath.exists()) {
                     filePath.mkdirs();
                 }
                 try {
                     multipartFile.transferTo(new File(path +filename));
-                    Course_Resource course_resource=new Course_Resource();
-                    course_resource.setCourse_id(course_id);
-                    course_resource.setResource_url(server+"Resource/"+course_id+"/"+filename);
-                    course_resource.setResource_name(filename);
+                    CourseResource courseResource=new CourseResource();
+                    courseResource.setCourseId(courseId);
+                    courseResource.setResourceURL(server+"Resource/"+ courseId +"/"+filename);
+                    courseResource.setResourceName(filename);
                     String [] type=filename.split("\\.");
-                    course_resource.setResource_type(type[type.length-1]);
-                    teacherService.uploadResource(course_resource);
+                    courseResource.setResourceType(type[type.length-1]);
+                    teacherService.uploadResource(courseResource);
                     System.out.println(filename+"上传成功");
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
+    <h3>登录测试</h3>
+    <a href="studentLogin.jsp">学生登录</a>
+
     <h3>入门程序</h3>
     <a href="test/hello?username=root&password=123">入门连接</a>
     <form action="form/login" method="post">

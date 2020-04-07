@@ -1,6 +1,10 @@
 package com.jiangpeisi.dao;
 
 import com.jiangpeisi.domain.Teacher;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
@@ -10,42 +14,22 @@ import java.util.List;
  * 持久层教师接口
  */
 @Repository
-public interface ITeacherDao{
-    /**
-     * 根据教师姓名查询
-     * @param name
-     * @return
-     */
+public interface ITeacherDao {
+    @Select("select * from teacher where id=#{id}")
+    Teacher findById(Integer id);
+
+    @Select("select * from teacher where username=#{name}")
     Teacher findByName(String name);
 
-    /**
-     * 插入教师
-     * @param teacher
-     */
+    @Insert("insert into teacher(username,password,findkey) values (#{username},#{password},#{findkey})")
     void insert(Teacher teacher);
 
-    /**
-     * 删除注销
-     * @param teacher
-     */
+    @Delete("delete from teacher where username=#{username}")
     void delete(Teacher teacher);
 
-    /**
-     * 更新信息
-     * @param teacher
-     */
+    @Update("update teacher set address=#{address},sex=#{sex},tel=#{tel},email=#{email},signature=#{signature},nickname=#{nickname},age=#{age},avatar=#{avatar} where username=#{username}")
     void update(Teacher teacher);
 
-    /**
-     * 更改密码
-     * @param teacher
-     */
+    @Update("update student set password = #{password} where username=#{username}")
     void updatePassword(Teacher teacher);
-
-    /**
-     * 根据id查找
-     * @param id
-     * @return
-     */
-    Teacher findById(Integer id);
 }

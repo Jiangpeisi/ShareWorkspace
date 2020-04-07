@@ -19,11 +19,10 @@ public class Student implements Serializable {
     private String nickname;
     private String age;
     private String avatar;
-    List<Course_Offering> course_offerings;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Student{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -133,13 +132,5 @@ public class Student implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public List<Course_Offering> getCourse_offerings() {
-        return course_offerings;
-    }
-
-    public void setCourse_offerings(List<Course_Offering> course_offerings) {
-        this.course_offerings = course_offerings;
     }
 }
