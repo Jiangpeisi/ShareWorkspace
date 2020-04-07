@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface INoticeDao {
-    public List<Notice> findAll();
-    public void insert(Notice notice);
+    List<Notice> findAll();
+    void insert(Notice notice);
 }

@@ -1,9 +1,11 @@
 package daoTest;
 
-
 import com.jiangpeisi.dao.ICourseDao;
 import com.jiangpeisi.dao.ICourseOfferingDao;
+import com.jiangpeisi.dao.ITeacherDao;
+import com.jiangpeisi.domain.Course;
 import com.jiangpeisi.domain.CourseOffering;
+import com.jiangpeisi.domain.Teacher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class courseOfferingDaoTest {
 
     @Autowired
     ICourseDao courseDao;
+
+    @Autowired
+    ITeacherDao teacherDao;
 
     @Test
     public void testFindAll() {
@@ -63,8 +68,15 @@ public class courseOfferingDaoTest {
     }
 
     @Test
-    public void testInsert() {
+    public void testInsert(){
+        System.out.println("------testInsert--------");
+        Course course = courseDao.findById(2);
+        Teacher teacher = teacherDao.findById(1);
+        CourseOffering co = new CourseOffering();
+        co.setCourse(course);
+        co.setTeacher(teacher);
 
+        courseOfferingDao.insert(co);
     }
 
     @Test

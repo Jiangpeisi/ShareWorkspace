@@ -1,9 +1,11 @@
 package com.jiangpeisi.domain;
 
+
+//todo
 /**
  * 课程习题
  */
-public class Course_Test {
+public class CourseTest {
     private Integer id;
-    private Integer course_id;
+    private Course course;
 }
