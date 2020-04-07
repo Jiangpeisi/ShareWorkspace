@@ -68,10 +68,12 @@ public class courseOfferingDaoTest {
     }
 
     @Test
-    public void testInsert(){
+    public void testInsert() {
         System.out.println("------testInsert--------");
         Course course = courseDao.findById(2);
+        System.out.println("course:" + course);
         Teacher teacher = teacherDao.findById(1);
+        System.out.println("teacher:" + teacher);
         CourseOffering co = new CourseOffering();
         co.setCourse(course);
         co.setTeacher(teacher);
@@ -80,13 +82,15 @@ public class courseOfferingDaoTest {
     }
 
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
 
     }
 
     @Test
-    public void testDelete(){
-
+    public void testDelete() {
+        System.out.println("------testDelete--------");
+        CourseOffering co = courseOfferingDao.findById(5);
+        System.out.println("delete:" + co);
+        courseOfferingDao.delete(co);
     }
-
 }

@@ -34,9 +34,9 @@ public class TeacherTest {
     public void uploadresource(){
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("course_id",3);
-        jsonObject.addProperty("resource_url","testurl");
-        jsonObject.addProperty("resource_name","测试名称");
-        jsonObject.addProperty("resource_type","video");
+        jsonObject.addProperty("url","testurl");
+        jsonObject.addProperty("name","测试名称");
+        jsonObject.addProperty("type","video");
         String url="http://localhost:8080/springmvc_day01_rmal01_war/teacher/uploadResource";
         try {
             System.out.println(http.post(url,jsonObject.toString()));

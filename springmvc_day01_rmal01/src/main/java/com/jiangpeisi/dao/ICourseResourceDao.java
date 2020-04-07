@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface ICourseResourceDao {
 
-    @Insert("insert into course_resource (course_id,resource_url,resource_name,resource_type) values (#{courseId},#{resourceURL},#{resourceName},#{resourceType})")
+    @Insert("insert into course_resource (course_id,url,name,type) values (#{courseId},#{resourceURL},#{resourceName},#{resourceType})")
     void insert(CourseResource cr);
 
     @Delete("delete from course_resource where id=#{id}")
@@ -19,9 +19,9 @@ public interface ICourseResourceDao {
     @Results(id = "courseResourceMap",
             value = {@Result(id = true, column = "id", property = "id"),
                     @Result(column = "course_id", property = "courseId"),
-                    @Result(column = "resource_url", property = "resourceURL"),
-                    @Result(column = "resource_name", property = "resourceName"),
-                    @Result(column = "resource_type", property = "resourceType"),
+                    @Result(column = "url", property = "resourceURL"),
+                    @Result(column = "name", property = "resourceName"),
+                    @Result(column = "type", property = "resourceType"),
             }
     )
     CourseResource findById(int id);

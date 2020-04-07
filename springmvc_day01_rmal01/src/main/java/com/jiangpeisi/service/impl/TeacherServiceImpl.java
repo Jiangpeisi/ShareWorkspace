@@ -2,6 +2,7 @@ package com.jiangpeisi.service.impl;
 
 import com.jiangpeisi.dao.*;
 import com.jiangpeisi.domain.*;
+import com.jiangpeisi.domain.dataWrapper.CourseOfferingResource;
 import com.jiangpeisi.service.ITeacherService;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +104,10 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public String quoteResource(CourseOffering courseOffering, CourseResource courseResource) {
-        courseOfferingResourceDao.insert(courseOffering, courseResource);
+        CourseOfferingResource cor = new CourseOfferingResource();
+        cor.setCourseResourceId(courseOffering.getId());
+        cor.setCourseOfferingId(courseResource.getId());
+        courseOfferingResourceDao.insert(cor);
         return "引用成功";
     }
 

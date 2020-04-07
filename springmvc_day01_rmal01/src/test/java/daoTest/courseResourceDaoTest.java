@@ -16,11 +16,11 @@ import java.util.List;
 @ContextConfiguration("classpath:applicationContext.xml")
 public class courseResourceDaoTest {
     @Autowired
-    ICourseResourceDao courseResource;
+    ICourseResourceDao courseResourceDao;
 
     @Test
     public void testFindAll() {
-        List<CourseResource> crs = courseResource.findAll();
+        List<CourseResource> crs = courseResourceDao.findAll();
         System.out.println("------testFindAll--------");
         for (CourseResource cr : crs) {
             System.out.println("--------------");
@@ -31,9 +31,28 @@ public class courseResourceDaoTest {
     @Test
     public void testFindById(){
         System.out.println("------testFindById--------");
-        CourseResource cr1 = courseResource.findById(1);
-        CourseResource cr2 = courseResource.findById(2);
+        CourseResource cr1 = courseResourceDao.findById(1);
+        CourseResource cr2 = courseResourceDao.findById(2);
         System.out.println(cr1);
         System.out.println(cr2);
+    }
+
+    @Test
+    public void testInsert(){
+        System.out.println("------testInsert--------");
+        CourseResource cr = new CourseResource();
+        cr.setCourseId(1);
+        cr.setResourceName("123");
+        System.out.println(cr);
+        courseResourceDao.insert(cr);
+    }
+
+
+    @Test
+    public void testDelete(){
+        System.out.println("------testDelete--------");
+        CourseResource cr =courseResourceDao.findById(7);
+        System.out.println(cr);
+        courseResourceDao.delete(cr);
     }
 }

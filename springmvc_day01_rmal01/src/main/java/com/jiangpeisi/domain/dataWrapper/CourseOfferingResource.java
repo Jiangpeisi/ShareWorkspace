@@ -1,5 +1,9 @@
 package com.jiangpeisi.domain.dataWrapper;
 
+import com.jiangpeisi.domain.Course;
+import com.jiangpeisi.domain.CourseOffering;
+import com.jiangpeisi.domain.CourseResource;
+
 import java.io.Serializable;
 
 public class CourseOfferingResource implements Serializable {

@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface ICourseOfferingResourceDao {
 
-    @Insert("insert into course_offering_resource (course_offering_id,course_resource_id) values (#{course_offering.id},#{course_resource.id})")
-    void insert(@Param("course_offering") CourseOffering co, @Param("course_resource") CourseResource cr);
+    @Insert("insert into course_offering_resource (course_offering_id,course_resource_id) values (#{courseOfferingId},#{courseResourceId})")
+    void insert(CourseOfferingResource courseOfferingResource);
 
     @Select("select * from course_offering_resource")
     @Results(id = "courseOfferingResourceMap",
@@ -23,16 +23,16 @@ public interface ICourseOfferingResourceDao {
     )
     List<CourseOfferingResource> findAll();
 
-    @Select("select course_offering_id from course_offering_resource where course_resource_id=#{id}")
-    @Results(value = {
-            @Result(id = true, column = "course_offering_id", one = @One(select = "com.jiangpeisi.dao.ICourseOfferingDao.findById"))
-    })
+    @Select("SELECT table2.id , table2.course_id, table2.teacher_id\n" +
+            "FROM (select course_offering_id from course_offering_resource where course_resource_id = 3) AS table1\n" +
+            "         INNER JOIN course_offering AS table2 ON table1.course_offering_id = table2.id")
+    @ResultMap("com.jiangpeisi.dao.ICourseOfferingDao.CourseOfferingMap")
     List<CourseOffering> findByCourseResource(CourseResource courseResource);
 
-    @Select("select course_resource_id from course_offering_resource where course_offering_id=#{id}")
-    @Results(value = {
-            @Result(id = true, column = "course_resource_id", one = @One(select = "com.jiangpeisi.dao.ICourseResourceDao.findById"))
-    })
+    @Select("SELECT table2.id, table2.course_id, table2.url, table2.name, table2.type\n" +
+            "FROM (select course_resource_id from course_offering_resource where course_offering_id=#{id}) AS table1\n" +
+            "INNER JOIN course_resource AS table2 ON table1.course_resource_id = table2.id")
+    @ResultMap("com.jiangpeisi.dao.ICourseResourceDao.courseResourceMap")
     List<CourseResource> findByCourseOffering(CourseOffering courseOffering);
 
 }
