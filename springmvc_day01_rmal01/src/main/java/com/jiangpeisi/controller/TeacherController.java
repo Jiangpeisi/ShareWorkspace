@@ -54,4 +54,30 @@ public class TeacherController {
         System.out.println("Controller /teacher/createCourse 执行");
         return teacherService.createCourse(course);
     }
+/*
+    @RequestMapping("/offerCourse")
+    public @ResponseBody String offerCourse(@RequestBody Course_Offering course_offering){
+        System.out.println(course_offering);
+        System.out.println("Controller /teacher/offerCourse 执行");
+        return teacherService.offerCourse(course_offering);
+    }
+
+    @RequestMapping("/findChooseStudent")
+    public @ResponseBody Course_Offering findChooseStudent(@RequestBody Course_Offering course_offering){
+        System.out.println("Controller /teacher/findChooseStudent 执行");
+        return teacherService.findChooseStudent(course_offering);
+    }
+
+    @RequestMapping("/quote_Resource")
+    public @ResponseBody String quote_Resource(@RequestBody Course_Offering_Resource course_offering_resource){
+        System.out.println("Controller /teacher/quote_Resource 执行");
+        return teacherService.quote_Resource(course_offering_resource);
+    }
+
+    @RequestMapping("/findQuoteResource")
+    public @ResponseBody Course_Offering findQuoteResource(@RequestBody Course_Offering course_offering){
+        System.out.println("Controller /teacher/findQuoteResource 执行");
+        return teacherService.findQuoteResource(course_offering);
+    }
+*/
 }

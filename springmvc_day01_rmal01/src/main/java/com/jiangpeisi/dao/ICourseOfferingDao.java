@@ -30,17 +30,17 @@ public interface ICourseOfferingDao {
                             one = @One(select = "com.jiangpeisi.dao.ITeacherDao.findById")
                     )
             })
-    List<CourseOffering> findById(Integer id);
+    CourseOffering findById(Integer id);
 
     @Select("select * from course_offering")
     @ResultMap("CourseOfferingMap")
     List<CourseOffering> findAll();
 
-    @Select("select * from course_offering where course_id=#{course.id}")
+    @Select("select * from course_offering where course_id=#{id}")
     @ResultMap("CourseOfferingMap")
-    List<CourseOffering> findByCourse(Course course);
+    List<CourseOffering> findByCourse(Integer id);
 
-    @Select("select * from course_offering where teacher_id=#{teacher.id}")
+    @Select("select * from course_offering where teacher_id=#{id}")
     @ResultMap("CourseOfferingMap")
-    List<CourseOffering> findByTeacher(Teacher teacher);
+    List<CourseOffering> findByTeacher(Integer id);
 }
