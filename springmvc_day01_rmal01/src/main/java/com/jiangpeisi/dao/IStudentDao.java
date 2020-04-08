@@ -1,6 +1,10 @@
 package com.jiangpeisi.dao;
 
 import com.jiangpeisi.domain.Student;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -8,40 +12,22 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IStudentDao {
-    /**
-     * 根据学生名查询
-     * @param name
-     * @return
-     */
+    @Select("select * from student where username=#{name}")
     Student findByName(String name);
 
-    //todo
+    @Select("select * from student where id=#{id}")
     Student findById(Integer id);
 
-
-    /**
-     * 插入学生，用于注册
-     * @param student
-     */
+    @Insert("INSERT INTO student(username,password,findkey) values (#{username},#{password},#{findkey})")
     void insert(Student student);
 
-    /**
-     * 删除学生，用于注销
-     * @param student
-     */
+    @Delete("delete from student where username=#{username}")
     void delete(Student student);
 
-    /**
-     * 更新学生
-     * @param student
-     */
+    @Update("update student set address=#{address},sex=#{sex},tel=#{tel},email=#{email},signature=#{signature},nickname=#{nickname},age=#{age},avatar=#{avatar} where username=#{username}")
     void update(Student student);
 
-    /**
-     * 修改学生密码
-     * @param student
-     */
+    @Update("update student set password = #{password} where username=#{username}")
     void updatePassword(Student student);
 
-    Student get_choose_course(Student student);
 }

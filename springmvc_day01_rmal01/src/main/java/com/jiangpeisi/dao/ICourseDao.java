@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface ICourseDao {
 
-    @Insert("select * from course")
+    @Insert("insert into course (name,description,course_img_url) values (#{name},#{description})")
     public void insert(Course course);
 
-    @Update("update course set name=#{name}, description = #{description} where id=#{id}")
+    @Update("update course set name=#{name}, description = #{description} ,course_img_url=#{course_img_url} where id=#{id}")
     public void update(Course course);
 
     @Delete("delete from course where id={#id}")

@@ -10,8 +10,7 @@ public class Course implements Serializable {
     private Integer id;
     private String name;
     private String description;
-    private List<CourseResource> courseResources;
-    private List<CourseTest> courseTests;
+    private String course_img_url;
 
     @Override
     public String toString() {
@@ -19,8 +18,7 @@ public class Course implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", courseResources=" + courseResources +
-                ", courseTests=" + courseTests +
+                ", course_img_url='" + course_img_url + '\'' +
                 '}';
     }
 
@@ -48,19 +46,11 @@ public class Course implements Serializable {
         this.description = description;
     }
 
-    public List<CourseResource> getCourseResources() {
-        return courseResources;
+    public String getCourse_img_url() {
+        return course_img_url;
     }
 
-    public void setCourseResources(List<CourseResource> courseResources) {
-        this.courseResources = courseResources;
-    }
-
-    public List<CourseTest> getCourseTests() {
-        return courseTests;
-    }
-
-    public void setCourseTests(List<CourseTest> courseTests) {
-        this.courseTests = courseTests;
+    public void setCourse_img_url(String course_img_url) {
+        this.course_img_url = course_img_url;
     }
 }

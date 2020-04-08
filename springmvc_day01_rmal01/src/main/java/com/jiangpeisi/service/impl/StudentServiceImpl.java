@@ -142,7 +142,8 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public Student findChooseCourse(Student student) {
-        return studentDao.get_choose_course(student);
+//        return studentDao.get_choose_course(student);
+    return null;
     }
 
     @Override
