@@ -77,7 +77,6 @@ public class courseOfferingDaoTest {
         CourseOffering co = new CourseOffering();
         co.setCourse(course);
         co.setTeacher(teacher);
-
         courseOfferingDao.insert(co);
     }
 

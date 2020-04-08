@@ -8,8 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.net.SocketTimeoutException;
 import java.util.List;
 
 //整合junit和spring，让junit在启动时候加载springIOC容器

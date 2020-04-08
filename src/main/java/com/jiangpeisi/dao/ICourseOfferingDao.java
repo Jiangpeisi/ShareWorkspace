@@ -1,8 +1,6 @@
 package com.jiangpeisi.dao;
 
-import com.jiangpeisi.domain.Course;
 import com.jiangpeisi.domain.CourseOffering;
-import com.jiangpeisi.domain.Teacher;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -27,8 +25,7 @@ public interface ICourseOfferingDao {
                     @Result(column = "course_id", property = "course",
                             one = @One(select = "com.jiangpeisi.dao.ICourseDao.findById")),
                     @Result(column = "teacher_id", property = "teacher",
-                            one = @One(select = "com.jiangpeisi.dao.ITeacherDao.findById")
-                    )
+                            one = @One(select = "com.jiangpeisi.dao.ITeacherDao.findById")),
             })
     CourseOffering findById(Integer id);
 
@@ -44,4 +41,4 @@ public interface ICourseOfferingDao {
     @ResultMap("CourseOfferingMap")
     List<CourseOffering> findByTeacher(Integer id);
 
-   }
+}
