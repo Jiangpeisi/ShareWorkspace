@@ -77,7 +77,6 @@ public class courseOfferingDaoTest {
         CourseOffering co = new CourseOffering();
         co.setCourse(course);
         co.setTeacher(teacher);
-
         courseOfferingDao.insert(co);
     }
 
@@ -89,7 +88,7 @@ public class courseOfferingDaoTest {
     @Test
     public void testDelete() {
         System.out.println("------testDelete--------");
-        CourseOffering co = courseOfferingDao.findById(5);
+        CourseOffering co = courseOfferingDao.findById(9);
         System.out.println("delete:" + co);
         courseOfferingDao.delete(co);
     }

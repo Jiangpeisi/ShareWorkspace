@@ -27,10 +27,9 @@ public class StudentController {
 
     @RequestMapping("/login")
     public @ResponseBody
-    Map<String, String> login(@RequestBody Student student) {
+    String login(@RequestBody Student student) {
         System.out.println("Controller /user/login 执行");
-        Map<String, String> result = studentService.login(student);
-
+        String result = studentService.login(student);
         return result;
     }
 
@@ -69,10 +68,10 @@ public class StudentController {
         return studentService.chooseCourse(course_choose);
 }*/
 
-    @RequestMapping("/findChooseCourse")
-    public @ResponseBody
-    Student findChooseCourse(@RequestBody Student student) {
-        System.out.println("Controller /user/findChooseCourse 执行");
-        return studentService.findChooseCourse(student);
-    }
+//    @RequestMapping("/findChooseCourse")
+//    public @ResponseBody
+//    Student findChooseCourse(@RequestBody Student student) {
+//        System.out.println("Controller /user/findChooseCourse 执行");
+//        return studentService.findChooseCourse(student);
+//    }
 }

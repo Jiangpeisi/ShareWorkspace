@@ -31,7 +31,7 @@ public class courseOfferingResourceDaoTest {
         System.out.println("------insertTest--------");
         CourseOfferingResource cor = new CourseOfferingResource();
         cor.setCourseOfferingId(1);
-        cor.setCourseResourceId(1);
+        cor.setCourseResourceId(5);
         courseOfferingResourceDao.insert(cor);
     }
 

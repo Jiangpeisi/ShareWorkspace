@@ -46,9 +46,7 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public String login(Teacher teacher) {
-        System.out.println("参数" + teacher);
         Teacher temp = teacherDao.findByName(teacher.getUsername());
-        System.out.println("temp" + temp);
         if (temp == null) {
             return "账户不存在";
         } else if (temp.getPassword().equals(teacher.getPassword())) {
@@ -87,14 +85,6 @@ public class TeacherServiceImpl implements ITeacherService {
         courseOfferingDao.insert(courseOffering);
         return "开课成功";
     }
-
-    //TODO
-    @Override
-    public CourseOffering findChooseStudent(CourseOffering courseOffering) {
-        return null;
-    }
-
-
 
     @Override
     public String uploadResource(CourseResource courseResource) {

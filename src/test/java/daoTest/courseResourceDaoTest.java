@@ -51,7 +51,7 @@ public class courseResourceDaoTest {
     @Test
     public void testDelete(){
         System.out.println("------testDelete--------");
-        CourseResource cr =courseResourceDao.findById(7);
+        CourseResource cr =courseResourceDao.findById(8);
         System.out.println(cr);
         courseResourceDao.delete(cr);
     }
