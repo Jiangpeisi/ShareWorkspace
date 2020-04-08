@@ -73,12 +73,12 @@ public class TeacherController {
         return teacherService.offerCourse(course_offering);
     }
 
-//    @RequestMapping("/findChooseStudent")
-//    public @ResponseBody
-//    CourseOffering findChooseStudent(@RequestBody CourseOffering course_offering) {
-//        System.out.println("Controller /teacher/findChooseStudent 执行");
-//        return teacherService.findChooseStudent(course_offering);
-//    }
+    @RequestMapping("/findChooseStudent")
+    public @ResponseBody
+    CourseOffering findChooseStudent(@RequestBody CourseOffering course_offering) {
+        System.out.println("Controller /teacher/findChooseStudent 执行");
+        return teacherService.findChooseStudent(course_offering);
+    }
 /*
     @RequestMapping("/quote_Resource")
     public @ResponseBody String quote_Resource(@RequestBody Course_Offering_Resource course_offering_resource){

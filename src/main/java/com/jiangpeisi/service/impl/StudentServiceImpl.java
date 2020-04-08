@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -28,6 +27,7 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 注册用户
+     *
      * @param student
      * @return
      */
@@ -43,6 +43,7 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 删除用户
+     *
      * @param student
      * @return
      */
@@ -54,6 +55,7 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 更改用户密码
+     *
      * @param student
      * @return
      */
@@ -72,33 +74,58 @@ public class StudentServiceImpl implements IStudentService {
 
     /**
      * 更新用户信息
+     *
      * @param student
      */
     @Override
     public String update(Student student) {
         studentDao.update(student);
         return "信息更新成功";
+//        User temp=userDao.findByUsername(user.getUsername());
+//        if(temp!=null) {
+//            temp.setSex(user.getSex());
+//            temp.setAddress(user.getAddress());
+//            temp.setEmail(user.getEmail());
+//            temp.setTel(user.getTel());
+//            temp.setSignature(user.getSignature());
+//            temp.setNickname(user.getNickname());
+//            temp.setAge(user.getAge());
+//            temp.setAvatar(user.getAvatar());
+//            userDao.update(temp);
+//            return "信息更新成功";
+//        }
+//        else
+//        {
+//            return "信息更新失败";
+//        }
     }
 
     /**
      * 用户登陆
+     *
      * @param student
      * @return
      */
     @Override
-    public String login(Student student) {
+    public Map<String, String> login(Student student) {
         Student temp = studentDao.findByName(student.getUsername());
+        Map<String, String> map = new HashMap<>();
         if (temp == null) {
-            return "账户不存在";
+            map.put("info", "账户不存在");
+            map.put("result", "false");
         } else if (temp.getPassword().equals(student.getPassword())) {
-            return "登陆成功";
+            map.put("info", "登录成功");
+            map.put("result", "true");
         } else {
-            return "密码错误";
+            map.put("info", "密码错误");
+            map.put("result", "false");
         }
+        return map;
     }
 
     /**
      * 根据username查询用户信息
+     *
      * @param name
      * @return
      */
@@ -107,25 +134,20 @@ public class StudentServiceImpl implements IStudentService {
         return studentDao.findByName(name);
     }
 
-    /**
-     * 选课
-     * @param co
-     * @param student
-     * @return
-     */
     @Override
     public String chooseCourse(CourseOffering co,Student student) {
         courseEnrollmentDao.insert(co.getId(),student.getId());
         return "选课成功";
     }
 
-    /**
-     * 获取已经选的课程
-     * @param student
-     * @return
-     */
     @Override
-    public List<CourseOffering> findChooseCourse(Student student) {
-        return courseEnrollmentDao.findByStudent(student);
+    public Student findChooseCourse(Student student) {
+//        return studentDao.get_choose_course(student);
+    return null;
+    }
+
+    @Override
+    public CourseResource findCourseById(int id) {
+        return course_resourceDao.findById(id);
     }
 }

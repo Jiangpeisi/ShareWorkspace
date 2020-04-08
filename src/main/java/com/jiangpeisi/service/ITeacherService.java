@@ -19,6 +19,8 @@ public interface ITeacherService {
 
     public String offerCourse(CourseOffering courseOffering);
 
+    public CourseOffering findChooseStudent(CourseOffering course_offering);
+
     public String uploadResource(CourseResource courseResource);
 
     public String quoteResource(CourseOffering courseOffering, CourseResource courseResource);

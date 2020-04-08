@@ -16,7 +16,7 @@ public interface ICourseEnrollmentDao {
     @Delete("delete from course_choose where course_offering_id=#{course_offering_id} and student_id=#{student_id}")
     void delete(@Param("course_offering_id") Integer courseOfferingId, @Param("student_id") Integer studentId);
 
-    @Select("SELECT student.* FROM (select student_id from course_choose where course_offering_id=#{id}) AS table1\n" +
+    @Select("SELECT student.* FROM (select student_id from course_choose where course_offering_id=4) AS table1\n" +
             "                 INNER JOIN student ON table1.student_id=student.id")
     List<Student> findByCourseOffering(CourseOffering co);
 

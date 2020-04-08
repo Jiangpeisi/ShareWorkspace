@@ -16,9 +16,11 @@ public interface ICourseService {
 
     Course findById(Integer id);
 
-    Course findByName(String name);
+    List<Course> findByName(String name);
 
     List<Course> findAll(Course course);
 
     boolean offeringCourse(CourseOffering co);
+
+
 }

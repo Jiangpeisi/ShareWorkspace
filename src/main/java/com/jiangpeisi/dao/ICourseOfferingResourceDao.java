@@ -33,5 +33,6 @@ public interface ICourseOfferingResourceDao {
             "FROM (select course_resource_id from course_offering_resource where course_offering_id=#{id}) AS table1\n" +
             "INNER JOIN course_resource AS table2 ON table1.course_resource_id = table2.id")
     @ResultMap("com.jiangpeisi.dao.ICourseResourceDao.courseResourceMap")
-    List<CourseResource> findByCourseOffering(CourseOffering co);
+    List<CourseResource> findByCourseOffering(CourseOffering courseOffering);
+
 }
