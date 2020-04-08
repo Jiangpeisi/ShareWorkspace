@@ -25,7 +25,7 @@ public class courseEnrollmentDaoTest {
         student.setId(3);
         List<CourseOffering> cos = enrollmentDao.findByStudent(student);
         System.out.println("------testFindByStudent--------");
-        System.out.println("学生:"+student+"选了");
+        System.out.println("学生:"+student+"         选了");
         for (CourseOffering co : cos) {
             System.out.println("--------------");
             System.out.println(co);

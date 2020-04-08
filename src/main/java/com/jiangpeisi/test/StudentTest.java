@@ -10,7 +10,7 @@ public class StudentTest {
     @Test
     public void choosecourse(){
         JsonObject jsonObject=new JsonObject();
-        jsonObject.addProperty("course_offering_id",4);
+        jsonObject.addProperty("course_offering_id",42222);
         jsonObject.addProperty("student_id",4);
         String url="http://localhost:8080/springmvc_day01_rmal01_war/student/chooseCourse";
         try {
